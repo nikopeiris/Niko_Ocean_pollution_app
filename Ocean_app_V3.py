@@ -12,19 +12,21 @@ def exit_app():
 def instruction():
     main_loader("Instructions")
     print("""                               **INSTRUCTIONS**
-    Welcome to the Ocean Pollution app. This app consists of few things.
-    1. Waste calculator:
-            Where you calculate the amount of waste you create compared to the average person,
-            and how to reduce it.
-    2. Solutions:
-            List of solutions you can perform to reduce waste.
-    3. Instructions:
-            Just in case you wanted to see Instruction again.
+        Welcome to the Ocean Pollution app. This app consists of few things.
+        1. Waste calculator:
+                Where you calculate the amount of waste you create compared to the average person,
+                and how to reduce it.
+        2. Solutions:
+                List of solutions you can perform to reduce waste.
+        3. Quiz:
+                Quiz about Ocean pollution and Ocean issues.
+        4. Instructions:
+                Just in case you wanted to see the instructions again
 
-    **If you want to go back to Home section, Type Home[H]**
-    If you are presented with options to choose from, Enter the corresponding number to the option
-    If you want to quit the program type, quit[q]""")
-    redo_home = check_redo_or_home(""" Enter Home['H'] to return to home
+        **If you want to go back to Home section, Type Home[H]**
+        **If you are presented with options to choose from, Enter the corresponding number to the option**
+        **If you want to quit the program type, quit[q]**""")
+    redo_home = check_redo_or_home(""" |Enter Home['H'] to return to home
             : """)
     if redo_home == "redo":
         pass
@@ -41,7 +43,7 @@ def num_validator(num):
     while True:
         try:
             num_value = int(input(num))
-            if 0 < num_value < 4:
+            if 0 < num_value < 5:
                 return num_value
             else:
                 print("Please choose a valid number")
@@ -68,13 +70,16 @@ def home():
     print(""" ***Choose activity number***
     1. Waste calculator
     2. Solutions
-    3. Instruction""")
+    3. Quiz
+    4. Instruction""")
     acti_input = num_validator("""    : """)
     if acti_input == 1:
         waste_calc()
     elif acti_input == 2:
         solutions()
     elif acti_input == 3:
+        quiz()
+    elif acti_input == 4:
         instruction()
     else:
         print("Thanks for using the program")
@@ -113,18 +118,18 @@ def main_loader(section):
     i2 = 1
     print(f"| Loading {section}", end="")
     while i <= 4:
-        time.sleep(0.5)
+        time.sleep(0.2)
         print(".", end="")
         i += 1
     print("")
-    time.sleep(0.2)
+    time.sleep(0.15)
     print("| Loading Complete...")
     print(f"| Displaying {section}", end="")
     while i2 <= 4:
-        time.sleep(0.25)
+        time.sleep(0.2)
         print(".", end="")
         i2 += 1
-    print("\n" * 3)
+    print("\n" * 5)
 
 
 def sub_loader(section):
@@ -133,21 +138,21 @@ def sub_loader(section):
     i3 = 1
     print(f"| Calculating {section}", end="")
     while i <= 4:
-        time.sleep(0.5)
+        time.sleep(0.2)
         print(".", end="")
         i += 1
     print("")
-    time.sleep(0.2)
+    time.sleep(0.15)
     print("| Finalising Calculations", end="")
     while i2 <= 4:
-        time.sleep(0.5)
+        time.sleep(0.2)
         print(".", end="")
         i2 += 1
     print("")
-    time.sleep(0.2)
+    time.sleep(0.15)
     print(f"| Displaying {section}", end="")
     while i3 <= 4:
-        time.sleep(0.25)
+        time.sleep(0.2)
         print(".", end="")
         i3 += 1
     print("\n" * 2)
@@ -177,6 +182,8 @@ def check_redo_or_home(question):
                 return "redo"
             elif checker == "h" or checker == "home":
                 return "home"
+            elif checker == "q" or checker == "quit":
+                exit_app()
             else:
                 print("Please input a valid option")
         except TypeError:
@@ -329,12 +336,28 @@ def solutions():
             elif choice == "solutions" or choice == "s":
                 print(solution_list)
             elif "0" < choice < "9":
-                time.sleep(1)
+                print("___________________________________________________________________________________________")
                 print(solutions_dict_V2.solution_dict[choice])
             else:
                 print("Enter valid option")
         except KeyError:
             print("Enter valid option")
+
+
+def quiz():
+    score = 0
+    main_loader("Quiz")
+    for question, choices, correct_choice, answer, possible_answer in zip(questions, answer_choices, correct_choices,
+                                                                          answers, possible_answers):
+        print(question)
+        print(choices)
+        user_answer = input(":").lower()
+        if user_answer in correct_choice:
+            print("Correct\n", answer, "\n")
+            score += 1
+        else:
+            print("Incorrect\n", answer, "\n")
+    print(score, "out of", len(questions), "that is", round(float(score / len(questions)) * 100), "%")
 
 
 questions = ["1. where does most ocean pollution come from?",
@@ -394,22 +417,6 @@ possible_answers = [["land activities", "marine activities", "both, it is fairly
                        ["coral sea", "1", "2", "3", "pitcairn islands", "hawaiian islands"],
                        ["atlantic herring", "3", "2", "1", "atlantic cod", "south pacific bluefin tuna"],
                        ["shellfish", "1", "2", "3", "marine mammals", "bottom-feeding fish"]]
-
-def quiz():
-    score = 0
-    main_loader("Quiz")
-    for question, choices, correct_choice, answer, possible_answer in zip(questions, answer_choices, correct_choices,
-                                                                          answers, possible_answers):
-        print(question)
-        print(choices)
-        user_answer = input(":").lower()
-        if user_answer in correct_choice:
-            print("Correct\n", answer, "\n")
-            score += 1
-        else:
-            print("Incorrect\n", answer, "\n")
-    print(score, "out of", len(questions), "that is", round(float(score / len(questions)) * 100), "%")
-
 
 # start of the main program
 # this dictionary will store info about the users production of waste/rubbish
