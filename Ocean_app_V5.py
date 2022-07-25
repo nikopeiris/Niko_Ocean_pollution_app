@@ -10,7 +10,7 @@ def exit_app():
     print("|Exiting...")
     time.sleep(1)
     print(f"|Thank You, {name} for using the Ocean Care app")
-    print("___________________________________________________________________________________________________")
+    print("_________________________________________________________________")
     time.sleep(1)
     exit()
 
@@ -19,7 +19,7 @@ def exit_app():
 def main_loader(section):
     i = 1
     i2 = 1
-    print("___________________________________________________________________________________________________")
+    print("_________________________________________________________________")
     print(f"| Loading {section}", end="")
     while i <= 4:
         time.sleep(0.25)
@@ -34,14 +34,14 @@ def main_loader(section):
         print(".", end="")
         i2 += 1
     print("\n" * 9)
-    print("___________________________________________________________________________________________________")
+    print("_________________________________________________________________")
 
 
 def sub_loader(section):
     i = 1
     i2 = 1
     i3 = 1
-    print("___________________________________________________________________________________________________")
+    print("_________________________________________________________________")
     print(f"| Calculating {section}", end="")
     while i <= 4:
         time.sleep(0.25)
@@ -62,7 +62,7 @@ def sub_loader(section):
         print(".", end="")
         i3 += 1
     print("\n" * 7)
-    print("___________________________________________________________________________________________________")
+    print("_________________________________________________________________")
 
 
 # checks if the users input is a digit, if not print error message
@@ -328,7 +328,7 @@ def solutions():
             elif choice == "solutions" or choice == "s":
                 print(solution_list)
             elif "0" < choice < "9":
-                print("_______________________________________________________________________________________________")
+                print("_____________________________________________________")
                 print(solutions_dict_V2.solution_dict[choice])
             else:
                 print("|Enter valid option")
@@ -367,8 +367,8 @@ def answer_validator(answer):
 def quiz():
     score = 0
     main_loader("Quiz")
-    num_of_question = num_validator_quiz("|How many question would you like to "
-                                         "try(Max=9): ")
+    num_of_question = num_validator_quiz("|How many question would you like to"
+                                         " try(Max=9): ")
     question_list = random.sample(range(0, 9), int(num_of_question))
     question_number = 0
     main_loader("Questions")
@@ -387,7 +387,7 @@ def quiz():
                   quiz_question__answer_V1.questions_and_answers[i][2],
                   "***")
         print(f"|Current score: {score}/{question_number}")
-        print("___________________________________________________________________________________________________")
+        print("_________________________________________________________________")
         time.sleep(1)
     print("""                               *** Results ***""")
     print(f"|Correct:{score}\n|Incorrect:{len(question_list) - score}")
@@ -400,7 +400,7 @@ def quiz():
     else:
         print(random.choice(print_lines[4:6]))
     time.sleep(1.5)
-    print("________________________________________________________________________________________________________")
+    print("_________________________________________________________________")
     redo_home = check_redo_or_home("""|Enter Redo['R'] or return Home['H']
         : """)
     if redo_home == "redo":
