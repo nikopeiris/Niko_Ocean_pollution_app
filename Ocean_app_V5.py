@@ -140,6 +140,8 @@ def week_year(question):
                 return "Week"
             elif string == "y" or string == "yearly":
                 return "Year"
+            elif string == "h" or string == "home":
+                home()
             else:
                 print("|Please enter valid option")
         except TypeError:
