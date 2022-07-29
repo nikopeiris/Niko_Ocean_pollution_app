@@ -30,7 +30,7 @@ def main_loader(section):
     print("| Loading Complete...")
     print(f"| Displaying {section}", end="")
     while i2 <= 4:
-        time.sleep(0.25)
+        time.sleep(0.1)
         print(".", end="")
         i2 += 1
     print("\n" * 9)
@@ -58,7 +58,7 @@ def sub_loader(section):
     time.sleep(0.15)
     print(f"| Displaying {section}", end="")
     while i3 <= 4:
-        time.sleep(0.25)
+        time.sleep(0.1)
         print(".", end="")
         i3 += 1
     print("\n" * 7)
